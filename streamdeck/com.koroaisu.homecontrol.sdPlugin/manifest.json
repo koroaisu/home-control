@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/manifest.json",
+  "UUID": "com.koroaisu.homecontrol",
+  "Name": "Home Control",
+  "Author": "koroaisu",
+  "Description": "SwitchBotの電球を選んで操作します。Home Controlを自動起動します。",
+  "Version": "0.2.0.0",
+  "SDKVersion": 2,
+  "Software": {"MinimumVersion": "7.6"},
+  "OS": [{"Platform": "windows", "MinimumVersion": "10"}],
+  "Nodejs": {"Version": "24"},
+  "CodePath": "plugin.mjs",
+  "Icon": "images/plugin",
+  "Category": "Home Control",
+  "CategoryIcon": "images/category",
+  "Actions": [{
+    "UUID": "com.koroaisu.homecontrol.light",
+    "Name": "電球を操作",
+    "Tooltip": "電球を選択してオン・オフ・明るさなどを操作",
+    "Icon": "images/action",
+    "Controllers": ["Keypad"],
+    "PropertyInspectorPath": "inspector.html",
+    "DisableAutomaticStates": true,
+    "States": [
+      {"Image": "images/off", "TitleAlignment": "bottom", "FontSize": 12},
+      {"Image": "images/on", "TitleAlignment": "bottom", "FontSize": 12},
+      {"Image": "images/unknown", "TitleAlignment": "bottom", "FontSize": 12}
+    ]
+  }]
+}
