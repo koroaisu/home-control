@@ -1,0 +1,7 @@
+data/
+runtime/
+buttons/
+node_modules/
+.env
+.env.*
+*.log
