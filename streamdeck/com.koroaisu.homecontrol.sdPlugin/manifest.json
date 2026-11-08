@@ -4,7 +4,7 @@
   "Name": "Home Control",
   "Author": "koroaisu",
   "Description": "SwitchBotの電球を選んで操作します。Home Controlを自動起動します。",
-  "Version": "0.2.0.0",
+  "Version": "0.4.7.0",
   "SDKVersion": 2,
   "Software": {"MinimumVersion": "7.6"},
   "OS": [{"Platform": "windows", "MinimumVersion": "10"}],
@@ -26,5 +26,17 @@
       {"Image": "images/on", "TitleAlignment": "bottom", "FontSize": 12},
       {"Image": "images/unknown", "TitleAlignment": "bottom", "FontSize": 12}
     ]
+  }, {
+    "UUID": "com.koroaisu.homecontrol.brightness",
+    "Name": "明るさを調整",
+    "Tooltip": "ダイヤルを回して電球の明るさを調整。押し込みの動作も選べます。",
+    "Icon": "images/action",
+    "Controllers": ["Encoder"],
+    "PropertyInspectorPath": "inspector.html",
+    "Encoder": {
+      "layout": "brightness-layout.json",
+      "TriggerDescription": {"Rotate": "明るさを調整", "Push": "何もしない", "Touch": "状態を再取得"}
+    },
+    "States": [{"Image": "images/dial-on"}]
   }]
 }

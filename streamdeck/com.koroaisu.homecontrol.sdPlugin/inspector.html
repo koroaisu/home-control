@@ -2,13 +2,16 @@
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home Control</title>
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; connect-src ws://127.0.0.1:*">
 <link rel="stylesheet" href="inspector.css"></head><body>
-<h1>Home Control</h1><p>このボタンで操作する電球を選びます。</p>
+<h1>Home Control</h1><p id="intro">このボタンで操作する電球を選びます。</p>
 <div class="tools"><button id="reload">一覧を更新</button><button id="settings">接続設定を開く</button></div>
 <fieldset><legend>電球（複数選択で一括操作）</legend><div id="devices">接続中…</div></fieldset>
-<label for="action">操作</label><select id="action"><option value="toggle">オン／オフ切り替え</option><option value="on">オン</option><option value="off">オフ</option><option value="brightness">明るさ</option><option value="temperature">色温度</option><option value="color">色</option></select>
+<div id="keyControls"><label for="action">操作</label><select id="action"><option value="toggle">オン／オフ切り替え</option><option value="on">オン</option><option value="off">オフ</option><option value="brightness">明るさ</option><option value="temperature">色温度</option><option value="color">色</option></select>
 <div id="numberRow" hidden><label id="numberLabel" for="value">値</label><input id="value" type="number" step="1"></div>
 <div id="colorRow" hidden><label for="color">色</label><input id="color" type="color" value="#ffffff"></div>
 <p class="hint">変更は自動保存します。切り替えは選択した各電球の状態を反転します。</p>
-<button id="status">状態を確認</button><p class="hint">黄：全台オン／灰：全台オフ／青：未確認・混在。状態は操作後と手動確認時に更新します。</p>
+</div><div id="dialControls" hidden><label for="step">1目盛りの変更幅（ポイント）</label><input id="step" type="number" min="1" max="25" step="1" value="5">
+<label for="pressAction">押し込み時の動作</label><select id="pressAction"><option value="none">何もしない</option><option value="toggle">オン／オフ切り替え</option><option value="on">オン</option><option value="off">オフ</option></select>
+<p class="hint">右回し：明るく／左回し：暗く。調整範囲は1〜100%。消灯は0%と表示します。画面のタップでは常に状態を再取得します。</p><p class="hint">押し込み後は予定の状態を表示し、1.5秒後に自動確認します。未反映なら3秒後、さらに5秒後に再確認し、それでも不一致・取得失敗の場合だけ警告します。確認中は押し込み・回転を受け付けません。タップではすぐに確認できます。</p><p class="hint">複数台の切り替えは各電球のオン／オフを反転します。「オン」「オフ」は全台を同じ状態にします。電源操作を押すと未送信の明るさ変更を取り消します。</p><p class="hint">明るさは先頭の電球を基準に、複数台を同じ明るさへ調整します。変更は自動保存します。</p></div>
+<button id="status">状態を確認</button><p class="hint" id="stateHint">黄：1台以上が点灯／灰：全台消灯／青：状態不明。明るさは色の判定に影響しません。操作後は自動で最大3回確認します。</p>
 <pre id="message" role="status" aria-live="polite">Home Controlに接続しています…</pre>
 <script src="inspector.js"></script></body></html>

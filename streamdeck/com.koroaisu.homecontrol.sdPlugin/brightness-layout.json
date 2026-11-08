@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.elgato.com/streamdeck/plugins/layout.json",
+  "id": "home-control-brightness",
+  "controller": "Encoder",
+  "items": [
+    {"key": "deviceName", "type": "text", "rect": [8, 3, 184, 23], "font": {"size": 14, "weight": 600}, "alignment": "left"},
+    {"key": "icon", "type": "pixmap", "rect": [8, 31, 44, 44]},
+    {"key": "value", "type": "text", "rect": [60, 30, 132, 32], "font": {"size": 25, "weight": 600}, "alignment": "right"},
+    {"key": "indicator", "type": "bar", "rect": [60, 66, 132, 8], "value": 0, "subtype": 4, "border_w": 0},
+    {"key": "status", "type": "text", "rect": [8, 80, 184, 17], "font": {"size": 10}, "alignment": "left"}
+  ]
+}
